@@ -1,0 +1,213 @@
+/* Базовая раскладка */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f1f5f9;            /* светло‑серо‑голубой фон */
+    color: #0f172a;
+}
+
+/* Шапка */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.logo-text {
+    font-weight: 600;
+    font-size: 16px;
+    color: #0f172a;
+}
+
+/* Навигация */
+.nav {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-link {
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #0f172a;
+    background: transparent;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-link:hover {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.nav-link--accent {
+    background: #0ea5e9;
+    color: #ffffff;
+}
+
+.nav-link--accent:hover {
+    background: #0284c7;
+    color: #ffffff;
+}
+
+/* Контент */
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+/* Заголовок каталога */
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Сетка товаров */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+/* Карточка товара */
+.product-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    padding: 12px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s ease,
+                transform 0.15s ease,
+                box-shadow 0.15s ease;
+}
+
+.product-card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(148, 163, 184, 0.35);
+}
+
+/* Подсветка при большой скидке */
+.product-card--highlight {
+    border-color: #22c55e;
+}
+
+/* Картинка фиксированного размера */
+.product-card__image-wrap {
+    width: 100%;
+    height: 170px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #e0f2fe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Текст в карточке */
+.product-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.product-card__name {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 2px;
+    color: #0f172a;
+}
+
+.product-card__code {
+    font-size: 11px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.product-card__brand {
+    font-size: 13px;
+    color: #475569;
+    margin: 0;
+}
+
+.product-card__price {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 6px 0 0;
+    color: #0284c7;
+}
+
+.product-card__discount {
+    font-size: 12px;
+    color: #16a34a;
+    margin: 2px 0 0;
+}
+
+/* Небольшая адаптивность */
+@media (max-width: 600px) {
+    .header-inner {
+        padding: 8px 12px;
+    }
+
+    .nav {
+        gap: 8px;
+    }
+
+    .page {
+        padding: 18px 12px 28px;
+    }
+}

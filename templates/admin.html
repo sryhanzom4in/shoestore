@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Панель администратора</h1>
+<h2>Товары</h2>
+<ul>
+{% for p in products %}
+    <li>{{ p.name }} ({{ p.code }}) - {{ p.price }} руб., скидка {{ p.discount }} %</li>
+{% endfor %}
+</ul>
+<h2>Заказы</h2>
+<ul>
+{% for o in orders %}
+    <li>Заказ #{{ o.id }} от {{ o.created_at }} (клиент {{ o.client.username }})</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин обуви</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'Icon.jpg' %}">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <div class="logo">
+            <img src="{% static 'picture.jpg' %}" alt="Logo">
+            <span class="logo-text">Магазин обуви</span>
+        </div>
+        <nav class="nav">
+            <a href="/" class="nav-link">Товары</a>
+            {% if user.is_authenticated %}
+                {% if user.role == 'manager' or user.role == 'admin' %}
+                    <a href="/manager/" class="nav-link">Панель менеджера</a>
+                {% endif %}
+                {% if user.role == 'admin' %}
+                    <a href="/admin-panel/" class="nav-link">Панель администратора</a>
+                {% endif %}
+                <a href="/logout/" class="nav-link nav-link--accent">Выход ({{ user.username }})</a>
+            {% else %}
+                <a href="/login/" class="nav-link nav-link--accent">Вход</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<main class="page">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

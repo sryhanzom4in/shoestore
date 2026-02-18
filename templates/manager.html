@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Панель менеджера</h1>
+<form method="get">
+    <input type="text" name="q" value="{{ query }}" placeholder="Поиск">
+    <button type="submit">Найти</button>
+</form>
+<h2>Товары</h2>
+<div class="products">
+{% for p in products %}
+    <div class="product {% if p.discount > 15 %}discounted{% endif %}">
+        <h3>{{ p.name }}</h3>
+        <p>Код: {{ p.code }}</p>
+        <p>Цена: {{ p.price }} руб.</p>
+        <p>Скидка: {{ p.discount }} %</p>
+    </div>
+{% endfor %}
+</div>
+<h2>Заказы</h2>
+<ul>
+{% for o in orders %}
+    <li>Заказ #{{ o.id }} от {{ o.created_at }} (клиент {{ o.client.username }})</li>
+{% endfor %}
+</ul>
+{% endblock %}
